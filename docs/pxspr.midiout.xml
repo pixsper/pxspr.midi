@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+
+<?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
+
+<c74object name="pxspr.midiout">
+	<digest>
+		Transmit raw MIDI data
+	</digest>
+	<description>
+		Transmits raw MIDI data to a specified port.
+	</description>
+	<!--METADATA-->
+	<metadatalist>
+		<metadata name="author">
+			Pixsper
+		</metadata>
+		<metadata name="tag">
+			Max
+		</metadata>
+		<metadata name="tag">
+			MIDI
+		</metadata>
+	</metadatalist>
+	<!--INLETS-->
+	<inletlist>
+		<inlet id="0" type="INLET_TYPE">
+			<digest>
+				Raw MIDI Messages
+			</digest>
+			<description>
+				TEXT_HERE
+			</description>
+		</inlet>
+		<inlet id="1" type="INLET_TYPE">
+			<digest>
+			</digest>
+			<description>
+				TEXT_HERE
+			</description>
+		</inlet>
+	</inletlist>
+	<!--OUTLETS-->
+	<!--ARGUMENTS-->
+	<objarglist>
+		<objarg name="port" optional="1" type="symbol">
+			<digest>
+				MIDI port ID
+			</digest>
+			<description>
+				Specifies the port (a-z) for transmitting MIDI data. If there is no argument, <o>midiout</o> transmits out port <m>a</m> (or the first output port listed in the MIDI Setup dialog.)
+			</description>
+		</objarg>
+		<objarg name="device" optional="1" type="symbol">
+			<digest>
+				MIDI output device
+			</digest>
+			<description>
+				The name of a MIDI output device may be used as the first argument to specify the port. The name 'none' can be used to prevent the object from transmitting MIDI messages on any port.
+			</description>
+		</objarg>
+	</objarglist>
+	<!--MESSAGES-->
+	<methodlist>
+		<method name="int">
+			<arglist>
+				<arg name="byte" optional="0" type="int" />
+			</arglist>
+			<digest>
+				Send a byte to a MIDI device
+			</digest>
+			<description>
+				The number is transmitted as a byte of a MIDI message to the specified port.
+			</description>
+		</method>
+		<method name="float">
+			<arglist>
+				<arg name="message" optional="0" type="float" />
+			</arglist>
+			<digest>
+				Send a byte to a MIDI device
+			</digest>
+			<description>
+				Converted to <m>int</m>.
+			</description>
+		</method>
+		<method name="list">
+			<arglist>
+				<arg name="bytes" optional="0" type="list" />
+			</arglist>
+			<digest>
+				Send values to a MIDI device
+			</digest>
+			<description>
+				The numbers are transmitted sequentially as individual bytes of a MIDI message to the specified port.
+			</description>
+		</method>
+		<method name="anything">
+			<arglist>
+				<arg name="port" optional="0" type="list" />
+			</arglist>
+			<digest>
+				Set the MIDI output device
+			</digest>
+			<description>
+				Performs the same function as <m>port</m>.
+			</description>
+		</method>
+		<method name="(mouse)">
+			<digest>
+				Select MIDI output device
+			</digest>
+			<description>
+				Double-clicking on a <o>midiout</o> object shows a pop-up menu for choosing a MIDI port or device.
+			</description>
+		</method>
+		<method name="port">
+			<arglist>
+				<arg name="port" optional="0" type="symbol" />
+			</arglist>
+			<digest>
+				Set the MIDI output device
+			</digest>
+			<description>
+				The word <m>port</m>, followed by a letter <m>a-z</m> or the name of a MIDI output port or device, specifies the port used to transmit the MIDI messages. The word <m>port</m> is optional and may be omitted. The name 'none' can be used to prevent the object from transmitting MIDI messages on any port.
+			</description>
+		</method>
+	</methodlist>
+	<!--ATTRIBUTES-->
+	<attributelist>
+		<attribute name="matchport" get="1" set="1" type="int" size="1">
+			<digest>
+				Enable MIDI for exact port match only
+			</digest>
+			<description>
+				If the <ar>port</ar> argument doesn't match an existing port or device name, set the object's MIDI port to 'none'.
+			</description>
+			<attributelist>
+				<attribute name="category" get="1" set="1" type="symbol" size="1" value="Behavior" />
+				<attribute name="default" get="1" set="1" type="int" size="1" value="0" />
+				<attribute name="label" get="1" set="1" type="symbol" size="1" value="Enable MIDI for exact port match only" />
+				<attribute name="style" get="1" set="1" type="symbol" size="1" value="onoff" />
+			</attributelist>
+		</attribute>
+		<attribute name="name" get="1" set="1" type="symbol" size="1">
+			<digest>
+				Port Name
+			</digest>
+			<description>
+				Set the object's MIDI port based on a device name. The attribute will attempt to do a case-sensitive partial string match based on the attribute's value.
+			</description>
+			<attributelist>
+				<attribute name="basic" get="1" set="1" type="int" size="1" value="1" />
+				<attribute name="category" get="1" set="1" type="symbol" size="1" value="Behavior" />
+				<attribute name="label" get="1" set="1" type="symbol" size="1" value="Port Name" />
+				<attribute name="style" get="1" set="1" type="symbol" size="1" value="text_onesymbol" />
+			</attributelist>
+		</attribute>
+	</attributelist>
+	<!--EXAMPLE-->
+	<examplelist>
+		<example img="midiout.png" caption="MIDI bytes received in the inlet are transmitted out the specified port" />
+	</examplelist>
+	<!--SEEALSO-->
+	<seealsolist>
+		<seealso name="midiformat" />
+		<seealso name="midiin" />
+		<seealso name="midiinfo" />
+		<seealso name="midiparse" />
+		<seealso name="midiselect" />
+		<seealso name="mpeconfig" />
+		<seealso name="mpeformat" />
+		<seealso name="mpeparse" />
+		<seealso name="noteout" />
+		<seealso name="polymidiin" />
+		<seealso name="sxformat" />
+		<seealso name="xbendout" />
+		<seealso name="xnoteout" />
+		<seealso name="midichapter01" module="max" type="tutorial" />
+	</seealsolist>
+	<misc name="Output">
+		<entry name="(MIDI)">
+			<description>
+				There are no outlets. The output is a byte of a MIDI message transmitted directly to the object's MIDI output port.
+			</description>
+		</entry>
+	</misc>
+</c74object>

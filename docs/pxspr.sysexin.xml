@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+
+<?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
+
+<c74object name="pxspr.sysexin">
+	<digest>
+		Receive MIDI system exclusive messages
+	</digest>
+	<description>
+		Receives MIDI system exclusive messages from a MIDI input device. It takes an optional argument for port selection. If a MIDI system exclusive message is received, <o>sysexin</o> outputs raw MIDI as integers.
+	</description>
+	<!--METADATA-->
+	<metadatalist>
+		<metadata name="author">
+			Pixsper
+		</metadata>
+		<metadata name="tag">
+			Max
+		</metadata>
+		<metadata name="tag">
+			MIDI
+		</metadata>
+	</metadatalist>
+	<!--INLETS-->
+	<inletlist>
+		<inlet id="0" type="INLET_TYPE">
+			<digest>
+				port Message Sets MIDI Input Port/Device
+			</digest>
+			<description>
+				TEXT_HERE
+			</description>
+		</inlet>
+		<inlet id="1" type="INLET_TYPE">
+			<digest>
+			</digest>
+			<description>
+				TEXT_HERE
+			</description>
+		</inlet>
+	</inletlist>
+	<!--OUTLETS-->
+	<outletlist>
+		<outlet id="0" type="OUTLET_TYPE">
+			<digest>
+				System-Exclusive Messages
+			</digest>
+			<description>
+				TEXT_HERE
+			</description>
+		</outlet>
+	</outletlist>
+	<!--ARGUMENTS-->
+	<objarglist>
+		<objarg name="port" optional="1" type="symbol">
+			<digest>
+				MIDI port ID
+			</digest>
+			<description>
+				Specifies the port (a-z) from which to receive incoming MIDI system exclusive messages. If there is no argument, <o>sysexin</o> receives from port <m>a</m> (or the first input port listed in the MIDI Setup dialog.)
+			</description>
+		</objarg>
+		<objarg name="device" optional="1" type="symbol">
+			<digest>
+				MIDI input device
+			</digest>
+			<description>
+				The name of a MIDI input device may be used as the first argument to specify the port. The name 'all' can be used to enable the reception of MIDI messages from any port. The name 'none' can be used to prevent the object from receiving MIDI messages from any port.
+			</description>
+		</objarg>
+	</objarglist>
+	<!--MESSAGES-->
+	<methodlist>
+		<method name="anything">
+			<arglist>
+				<arg name="port" optional="0" type="list" />
+			</arglist>
+			<digest>
+				Set the MIDI input device
+			</digest>
+			<description>
+				Performs the same function as <m>port</m> but without need for the word, &quot;port&quot;.
+			</description>
+		</method>
+		<method name="(mouse)">
+			<digest>
+				Select a MIDI input device
+			</digest>
+			<description>
+				Double-clicking on a <o>sysexin</o> object shows a pop-up menu for choosing a MIDI port or device.
+			</description>
+		</method>
+		<method name="(MIDI)">
+			<digest>
+				Output received MIDI sysex messages
+			</digest>
+			<description>
+				The <o>sysexin</o> object receives its input from a MIDI sysex message received from a MIDI input device.
+			</description>
+		</method>
+		<method name="port">
+			<arglist>
+				<arg name="port" optional="0" type="symbol" />
+			</arglist>
+			<digest>
+				Set the MIDI input device
+			</digest>
+			<description>
+				The word <m>port</m>, followed by a letter <m>a-z</m> or the name of a MIDI input port or device, sets the port from which the object receives incoming MIDI messages. The word <m>port</m> is optional and may be omitted. The name 'all' can be used to enable the reception of MIDI messages from any port. The name 'none' can be used to prevent the object from receiving MIDI messages from any port.
+			</description>
+		</method>
+	</methodlist>
+	<!--ATTRIBUTES-->
+	<attributelist>
+		<attribute name="matchport" get="1" set="1" type="int" size="1">
+			<digest>
+				Enable MIDI for exact port match only
+			</digest>
+			<description>
+				If the <ar>port</ar> argument doesn't match an existing port or device name, set the object's MIDI port to 'none'.
+			</description>
+			<attributelist>
+				<attribute name="category" get="1" set="1" type="symbol" size="1" value="Behavior" />
+				<attribute name="default" get="1" set="1" type="int" size="1" value="0" />
+				<attribute name="label" get="1" set="1" type="symbol" size="1" value="Enable MIDI for exact port match only" />
+				<attribute name="style" get="1" set="1" type="symbol" size="1" value="onoff" />
+			</attributelist>
+		</attribute>
+		<attribute name="name" get="1" set="1" type="symbol" size="1">
+			<digest>
+				Port Name
+			</digest>
+			<description>
+				Set the object's MIDI port based on a device name. The attribute will attempt to do a case-sensitive partial string match based on the attribute's value.
+			</description>
+			<attributelist>
+				<attribute name="basic" get="1" set="1" type="int" size="1" value="1" />
+				<attribute name="category" get="1" set="1" type="symbol" size="1" value="Behavior" />
+				<attribute name="label" get="1" set="1" type="symbol" size="1" value="Port Name" />
+				<attribute name="style" get="1" set="1" type="symbol" size="1" value="text_onesymbol" />
+			</attributelist>
+		</attribute>
+	</attributelist>
+	<!--EXAMPLE-->
+	<examplelist>
+		<example img="sysexin.png" caption="Examine incoming System Exclusive messages" />
+	</examplelist>
+	<!--SEEALSO-->
+	<seealsolist>
+		<seealso name="midiin" />
+		<seealso name="sxformat" />
+	</seealsolist>
+	<misc name="Output">
+		<entry name="int">
+			<description>
+				MIDI system exclusive messages received from the specified port are sent out the outlet, byte-by-byte.
+			</description>
+		</entry>
+	</misc>
+</c74object>

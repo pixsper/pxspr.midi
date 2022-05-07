@@ -1,0 +1,27 @@
+{
+	"name" : "@C74_PACKAGE_NAME@",
+	"displayname" : "pxspr.midi",
+	"version" : "@GIT_VERSION_MAJ@.@GIT_VERSION_MIN@.@GIT_VERSION_SUB@",
+	"author" : "Pixsper",
+	"description" : "Alternative MIDI external objects for Max",
+	"tags" : [  ],
+	"website" : "https://www.github.com/pixsper/pxspr.midi",
+	"extends" : "",
+	"extensible" : 0,
+	"max_version_min" : "8.2.0",
+	"max_version_max" : "none",
+	"os" : 	{
+		"macintosh" : {
+		    "platform" : [ "x64", "arm64" ],
+		    "min_version" : "10.11.x"
+        },
+        "windows" : {
+        	"platform" : [ "x64" ],
+        	"min_version" : "7"
+        },
+    },
+	"package_extra" : 	{
+		"reverse_domain" : "com.pixsper",
+		"copyright" : "Copyright (c) 2022 Pixsper Ltd."
+	}
+}

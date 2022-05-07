@@ -1,0 +1,6 @@
+[submodule "source/max-sdk-base"]
+	path = source/max-sdk-base
+	url = https://github.com/Cycling74/max-sdk-base
+[submodule "source/rtmidi"]
+	path = source/rtmidi
+	url = https://github.com/thestk/rtmidi

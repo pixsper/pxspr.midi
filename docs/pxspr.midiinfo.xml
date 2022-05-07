@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+
+<?xml-stylesheet href="./_c74_ref.xsl" type="text/xsl"?>
+
+<c74object name="pxspr.midiinfo">
+	<digest>
+		Fill a pop-up menu with MIDI device names
+	</digest>
+	<description>
+		Outputs a series of messages which will set up a pop-up menu to a list of MIDI output devices when a <m>bang</m> is received. A number in <o>midiinfo</o>'s right inlet creates a list of MIDI input devices.
+	</description>
+	<!--METADATA-->
+	<metadatalist>
+		<metadata name="author">
+			Pixsper
+		</metadata>
+		<metadata name="tag">
+			Max
+		</metadata>
+		<metadata name="tag">
+			MIDI
+		</metadata>
+		<metadata name="reference">
+			TEXT_HERE
+		</metadata>
+		<metadata name="license">
+			TEXT_HERE
+		</metadata>
+		<metadata name="alias-unlisted">
+			omsinfo
+		</metadata>
+	</metadatalist>
+	<!--INLETS-->
+	<inletlist>
+		<inlet id="0" type="INLET_TYPE">
+			<digest>
+				bang, int List Outputs, int Sets Menu Item
+			</digest>
+			<description>
+				TEXT_HERE
+			</description>
+		</inlet>
+		<inlet id="1" type="INLET_TYPE">
+			<digest>
+				bang, int List Inputs, int Sets Menu Item
+			</digest>
+			<description>
+				TEXT_HERE
+			</description>
+		</inlet>
+	</inletlist>
+	<!--OUTLETS-->
+	<outletlist>
+		<outlet id="0" type="OUTLET_TYPE">
+			<digest>
+				Connect to menu Object
+			</digest>
+			<description>
+				TEXT_HERE
+			</description>
+		</outlet>
+	</outletlist>
+	<!--ARGUMENTS-->
+	<objarglist>
+		<objarg id="0" name="OBJARG_NAME" type="OBJARG_TYPE" optional="0">
+			<digest>
+				TEXT_HERE
+			</digest>
+			<description>
+				TEXT_HERE
+			</description>
+		</objarg>
+	</objarglist>
+	<!--MESSAGES-->
+	<methodlist>
+		<method name="bang">
+			<arglist />
+			<digest>
+				Retrieve MIDI output devices
+			</digest>
+			<description>
+				In left inlet: Same as <m>int</m>, but doesn't send a <m>set</m> message after setting the <o>umenu</o> items. The equivalent message to <m>bang</m> for retrieving input device names is -1 in the right inlet.
+			</description>
+		</method>
+		<method name="int">
+			<arglist>
+				<arg name="index" type="int" />
+			</arglist>
+			<digest>
+				Function depends on inlet
+			</digest>
+			<description>
+				In left inlet: Causes <o>midiinfo</o> to send out a series of messages containing the names of the current MIDI output devices. Those messages can be used to set the individual items of a pop-up <o>umenu</o> object connected to the <o>midiinfo</o> object's outlet. The number received in the <o>midiinfo</o> object's left inlet is then sent in a set message to set the currently displayed <o>umenu</o> item. In right inlet: Causes <o>midiinfo</o> to send out a series of messages containing the names of the current MIDI input devices. Those messages can be used to set the individual items of a pop-up <o>umenu</o> object connected to the <o>midiinfo</o> object's outlet. The number received in the <o>midiinfo</o> object's right inlet is then sent in a set message to set the currently displayed <o>umenu</o> item, unless the number is less than zero, in which case no set message is sent.
+			</description>
+		</method>
+		<method name="controllers">
+			<arglist>
+				<arg name="index" type="int" />
+			</arglist>
+			<digest>
+				Retrieve MIDI controller list
+			</digest>
+			<description>
+				In left inlet: Causes <o>midiinfo</o> to send out a series of messages containing the names of all MIDI controllers (devices that transmit MIDI) in the current MIDI setup. Those messages can be used to set the individual items of a pop-up <o>umenu</o> object connected to the <o>midiinfo</o> object's outlet. The word <m>controllers</m> may be followed by a number, which sets the pop-up <o>umenu</o> to that item number after the menu items have been created.
+			</description>
+		</method>
+	</methodlist>
+	<!--ATTRIBUTES-->
+	<attributelist>
+		<attribute name="autopollcontrollers" get="1" set="1" type="int" size="1">
+			<digest>
+				Output controller list on change
+			</digest>
+			<description>
+				When enabled, object will output an updated controller list upon changes to connected devices
+			</description>
+			<attributelist>
+				<attribute name="default" get="1" set="1" type="int" size="1" value="0" />
+				<attribute name="label" get="1" set="1" type="symbol" size="1" value="Update Controller List on Changes" />
+				<attribute name="style" get="1" set="1" type="symbol" size="1" value="onoff" />
+			</attributelist>
+		</attribute>
+		<attribute name="autopollinput" get="1" set="1" type="int" size="1">
+			<digest>
+				Update Input Device List on Changes
+			</digest>
+			<description>
+				When enabled, object will output an updated input device list upon changes to connected devices
+			</description>
+			<attributelist>
+				<attribute name="default" get="1" set="1" type="int" size="1" value="0" />
+				<attribute name="label" get="1" set="1" type="symbol" size="1" value="Update Input Device List on Changes" />
+				<attribute name="style" get="1" set="1" type="symbol" size="1" value="onoff" />
+			</attributelist>
+		</attribute>
+		<attribute name="autopolloutput" get="1" set="1" type="int" size="1">
+			<digest>
+				Update Output Device List on Changes
+			</digest>
+			<description>
+				When enabled, object will output an updated output device list upon changes to connected devices
+			</description>
+			<attributelist>
+				<attribute name="default" get="1" set="1" type="int" size="1" value="0" />
+				<attribute name="label" get="1" set="1" type="symbol" size="1" value="Update Output Device List on Changes" />
+				<attribute name="style" get="1" set="1" type="symbol" size="1" value="onoff" />
+			</attributelist>
+		</attribute>
+	</attributelist>
+	<!--EXAMPLE-->
+	<examplelist>
+		<example img="midiinfo.png" caption="Get output device names for MIDI output objects... and for MIDI input objects" />
+	</examplelist>
+	<!--SEEALSO-->
+	<seealsolist>
+		<seealso name="midiin" />
+		<seealso name="midiout" />
+		<seealso name="umenu" />
+		<seealso name="midichapter01" module="max" type="tutorial" />
+	</seealsolist>
+	<misc name="Output">
+		<entry name="clear">
+			<description>
+				<o>midiinfo</o> first sends a <m>clear</m> message out its outlet to clear all the receiving <o>umenu</o> object's items.
+			</description>
+		</entry>
+		<entry name="append">
+			<description>
+				Immediately after sending the <m>clear</m> message, <o>midiinfo</o> sends an <m>append</m> message for each MIDI input or output device name, to set the items of a connected <o>umenu</o> object. The device names will be sent out in the order in which they appear in Max's <m>MIDI Setup</m> dialog.
+			</description>
+		</entry>
+		<entry name="set">
+			<description>
+				If the incoming message to <o>midiinfo</o> is an integer greater than or equal to zero, a <m>set</m> message is sent after the <m>append</m> messages, to set the currently displayed menu item.
+			</description>
+		</entry>
+	</misc>
+</c74object>
